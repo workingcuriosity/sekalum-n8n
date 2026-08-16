@@ -30,6 +30,8 @@ The [Community Flyer concept](docs/COMMUNITY_FLYER_CONCEPT.md) provides a
 short, shareable overview without linking to a private or unconfirmed public
 destination.
 
+<img src="docs/assets/n8n_Sekalum_Flyer.png" alt="Sekalum for n8n workflow and credential integration overview" width="720">
+
 ### Example Workflows
 
 - [Variant A — Targeted Provider](examples/sekalum-variant-a-targeted-provider.json)
