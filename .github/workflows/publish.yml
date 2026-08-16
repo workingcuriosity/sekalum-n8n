@@ -44,4 +44,4 @@ jobs:
         run: npm pack --dry-run
 
       - name: Publish with npm Trusted Publishing
-        run: npm publish
+        run: npm publish --ignore-scripts
