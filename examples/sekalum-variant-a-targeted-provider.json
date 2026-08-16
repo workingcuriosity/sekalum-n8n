@@ -1,0 +1,64 @@
+{
+  "name": "Sekalum Variant A - Targeted Provider",
+  "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4a000",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "# SEKALUM\n## Variant A — Targeted Provider\n\nUse this workflow when you already know the provider you need. Replace the Provider Filter and the explicit Secret field with values supported by your Consumer Grant. Discover filters the unchanged public response locally; Resolve requests only the selected field.",
+        "height": 300,
+        "width": 420
+      },
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4a010",
+      "name": "Sekalum Variant A Guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [220, -180]
+    },
+    {
+      "parameters": {},
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4a001",
+      "name": "When clicking ‘Execute’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [300, 300]
+    },
+    {
+      "parameters": {
+        "resource": "credential",
+        "operation": "discover",
+        "providerFilter": "replace-with-provider-name-or-key"
+      },
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4a002",
+      "name": "Sekalum Discover — Targeted Provider",
+      "type": "n8n-nodes-credential-hub.credentialHub",
+      "typeVersion": 1,
+      "position": [560, 300]
+    },
+    {
+      "parameters": {
+        "resource": "credential",
+        "operation": "resolve",
+        "credentialKey": "={{$json.credentialKey}}",
+        "fieldNames": "replace-with-granted-secret-field"
+      },
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4a003",
+      "name": "Sekalum Resolve — Explicit Field",
+      "type": "n8n-nodes-credential-hub.credentialHub",
+      "typeVersion": 1,
+      "position": [840, 300]
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute’": {
+      "main": [[{"node": "Sekalum Discover — Targeted Provider", "type": "main", "index": 0}]]
+    },
+    "Sekalum Discover — Targeted Provider": {
+      "main": [[{"node": "Sekalum Resolve — Explicit Field", "type": "main", "index": 0}]]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4a003",
+  "meta": {"templateCredsSetupCompleted": false},
+  "tags": []
+}

@@ -1,0 +1,67 @@
+{
+  "name": "Sekalum Error Cases",
+  "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4b000",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "# SEKALUM\n## Error Cases\n\nConfigure the two n8n credentials described in the Quick Start before running this example:\n- Invalid Consumer Token → a Sekalum API credential with an intentionally invalid token.\n- Missing Consumer Grant → a valid Consumer token, an existing Credential, and no matching Consumer Grant.\n\nExpected boundaries: HTTP 401 `API_TOKEN_AUTH_FAILED` and HTTP 403 `RESOLVE_NOT_AVAILABLE`.",
+        "height": 340,
+        "width": 460
+      },
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4b010",
+      "name": "Sekalum Error Cases Guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [160, -180]
+    },
+    {
+      "parameters": {},
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4b001",
+      "name": "When clicking ‘Execute’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [260, 360]
+    },
+    {
+      "parameters": {
+        "resource": "credential",
+        "operation": "resolve",
+        "credentialKey": "replace-with-existing-credential-key",
+        "fieldNames": "accessToken"
+      },
+      "continueOnFail": true,
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4b002",
+      "name": "Invalid Consumer Token",
+      "type": "n8n-nodes-credential-hub.credentialHub",
+      "typeVersion": 1,
+      "position": [540, 260]
+    },
+    {
+      "parameters": {
+        "resource": "credential",
+        "operation": "resolve",
+        "credentialKey": "replace-with-existing-credential-key",
+        "fieldNames": "accessToken"
+      },
+      "continueOnFail": true,
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4b003",
+      "name": "Missing Consumer Grant",
+      "type": "n8n-nodes-credential-hub.credentialHub",
+      "typeVersion": 1,
+      "position": [540, 460]
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute’": {
+      "main": [[
+        {"node": "Invalid Consumer Token", "type": "main", "index": 0},
+        {"node": "Missing Consumer Grant", "type": "main", "index": 0}
+      ]]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4b004",
+  "meta": {"templateCredsSetupCompleted": false},
+  "tags": []
+}

@@ -1,0 +1,89 @@
+{
+  "name": "Sekalum Variant B - Discover and Select",
+  "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f40000",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "# SEKALUM\n## Variant B — Discover & Select\n\nLeave Discover unfiltered to receive one item per accessible Credential. Replace the selection key in the Code node, then choose the explicit Secret field required by your application and allowed by the Consumer Grant.",
+        "height": 300,
+        "width": 440
+      },
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f40010",
+      "name": "Sekalum Variant B Guide",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [180, -180]
+    },
+    {
+      "parameters": {},
+      "id": "credential-hub-manual-trigger",
+      "name": "When clicking ‘Execute’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1.1,
+      "position": [200, 300]
+    },
+    {
+      "parameters": {
+        "resource": "credential",
+        "operation": "discover",
+        "providerFilter": ""
+      },
+      "id": "credential-hub-discover",
+      "name": "Sekalum Discover — All Providers",
+      "type": "n8n-nodes-credential-hub.credentialHub",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "const selectedCredentialKey = 'replace-with-discovered-credential-key';\n\nif (selectedCredentialKey === 'replace-with-discovered-credential-key') {\n  throw new Error('Replace selectedCredentialKey with a public credentialKey from Discover');\n}\n\nconst selected = $input.all().filter((item) => item.json.credentialKey === selectedCredentialKey);\nif (selected.length === 0) {\n  throw new Error('The selected credentialKey was not returned by Discover');\n}\nreturn selected;"
+      },
+      "id": "credential-hub-select",
+      "name": "Select Credential by Public credentialKey",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [720, 300]
+    },
+    {
+      "parameters": {
+        "content": "## Security boundary\nDiscover returns public metadata and credentialKey, not the Consumer Grant's authorized Secret-name list. Keep Resolve explicit. Never resolve every field marked `secret: true` automatically.",
+        "height": 220,
+        "width": 380
+      },
+      "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f40011",
+      "name": "Explicit Resolve Boundary",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [700, 40]
+    },
+    {
+      "parameters": {
+        "resource": "credential",
+        "operation": "resolve",
+        "credentialKey": "={{$json.credentialKey}}",
+        "fieldNames": "replace-with-granted-secret-field"
+      },
+      "id": "credential-hub-resolve",
+      "name": "Sekalum Resolve — Explicit Field",
+      "type": "n8n-nodes-credential-hub.credentialHub",
+      "typeVersion": 1,
+      "position": [1000, 300]
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute’": {
+      "main": [[{"node": "Sekalum Discover — All Providers", "type": "main", "index": 0}]]
+    },
+    "Sekalum Discover — All Providers": {
+      "main": [[{"node": "Select Credential by Public credentialKey", "type": "main", "index": 0}]]
+    },
+    "Select Credential by Public credentialKey": {
+      "main": [[{"node": "Sekalum Resolve — Explicit Field", "type": "main", "index": 0}]]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "versionId": "credential-hub-n8n-example-v2",
+  "meta": {"templateCredsSetupCompleted": false},
+  "tags": []
+}

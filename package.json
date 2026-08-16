@@ -1,0 +1,60 @@
+{
+  "name": "n8n-nodes-credential-hub",
+  "version": "0.1.1",
+  "description": "Native n8n community node Sekalum for the Credential HUB Consumer API.",
+  "license": "MIT",
+  "keywords": [
+    "n8n-community-node-package",
+    "credential-hub",
+    "sekalum",
+    "credentials",
+    "consumer-api"
+  ],
+  "author": {
+    "name": "Working Curiosity",
+    "email": "luiscyphre404@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/workingcuriosity/sekalum-n8n.git"
+  },
+  "homepage": "https://github.com/workingcuriosity/sekalum-n8n",
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "release": "n8n-node release",
+    "prepublishOnly": "n8n-node prerelease"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/CredentialHubApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/CredentialHub/CredentialHub.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "*",
+    "eslint": "9.39.4",
+    "prettier": "3.8.3",
+    "release-it": "20.2.0",
+    "typescript": "5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/workingcuriosity/sekalum-n8n/issues"
+  }
+}
