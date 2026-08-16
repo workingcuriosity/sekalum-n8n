@@ -30,7 +30,7 @@
       },
       "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4a002",
       "name": "Sekalum Discover — Targeted Provider",
-      "type": "n8n-nodes-credential-hub.credentialHub",
+      "type": "n8n-nodes-sekalum.credentialHub",
       "typeVersion": 1,
       "position": [560, 300]
     },
@@ -43,7 +43,7 @@
       },
       "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4a003",
       "name": "Sekalum Resolve — Explicit Field",
-      "type": "n8n-nodes-credential-hub.credentialHub",
+      "type": "n8n-nodes-sekalum.credentialHub",
       "typeVersion": 1,
       "position": [840, 300]
     }

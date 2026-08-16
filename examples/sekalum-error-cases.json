@@ -32,7 +32,7 @@
       "continueOnFail": true,
       "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4b002",
       "name": "Invalid Consumer Token",
-      "type": "n8n-nodes-credential-hub.credentialHub",
+      "type": "n8n-nodes-sekalum.credentialHub",
       "typeVersion": 1,
       "position": [540, 260]
     },
@@ -46,7 +46,7 @@
       "continueOnFail": true,
       "id": "6a1f5f27-6b21-4eb7-94b4-d7f4b7f4b003",
       "name": "Missing Consumer Grant",
-      "type": "n8n-nodes-credential-hub.credentialHub",
+      "type": "n8n-nodes-sekalum.credentialHub",
       "typeVersion": 1,
       "position": [540, 460]
     }

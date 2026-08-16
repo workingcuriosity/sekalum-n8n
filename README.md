@@ -4,9 +4,15 @@ This package provides Sekalum, a native n8n connector for the existing
 Credential HUB Consumer API. It does not change Credential HUB, add endpoints,
 use the Management API, or introduce provider-specific behavior.
 
-Selected technical `credential-hub` identifiers are retained for backward
-compatibility with existing n8n workflows. The product and user-facing
-documentation use the Sekalum identity.
+The npm package is published as `n8n-nodes-sekalum`. The internal
+`credentialHub` node and `credentialHubApi` credential identifiers remain
+unchanged implementation details. The product and user-facing documentation
+use the Sekalum identity.
+
+## Installation
+
+Install `n8n-nodes-sekalum` as an n8n community node, then restart n8n before
+using the Sekalum node and its **Sekalum API** credential.
 
 ## Start here
 

@@ -30,7 +30,7 @@
       },
       "id": "credential-hub-discover",
       "name": "Sekalum Discover — All Providers",
-      "type": "n8n-nodes-credential-hub.credentialHub",
+      "type": "n8n-nodes-sekalum.credentialHub",
       "typeVersion": 1,
       "position": [460, 300]
     },
@@ -65,7 +65,7 @@
       },
       "id": "credential-hub-resolve",
       "name": "Sekalum Resolve — Explicit Field",
-      "type": "n8n-nodes-credential-hub.credentialHub",
+      "type": "n8n-nodes-sekalum.credentialHub",
       "typeVersion": 1,
       "position": [1000, 300]
     }
